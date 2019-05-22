@@ -166,11 +166,13 @@ color: #ffffff;
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
+  max-width: 468px;
+  margin: 60px auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -212,7 +214,29 @@ color: #ffffff;
 .form  {
   border-top: 20px;
 }
+form p   {
+  float: left;
+  margin-bottom: 30px;
+}
+form #role{
+  background: #f2f2f2;
+float: left;
+margin-top: 6px;
+  font-family: "Roboto", sans-serif;
+  margin-left: 5px;
+}
+form label{
+  font-family: "Roboto", sans-serif;
+  margin-left: 6px;
+}
+
 /*signup **/
 .signup{
   padding-top: 7%;
+}
+/*articles shown in admins dashboard**/
+table {
+  font:15px/1.5 Arial,helvetica,sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }

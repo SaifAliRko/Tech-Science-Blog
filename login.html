@@ -29,9 +29,22 @@
     <div class="login-page">
   <div class="form">
     <form class="login-form">
+      <form >
+      <p>
+             <label>Login as</label><br>
+             <select id = "role">
+               <option value = "1">Admin</option>
+               <option value = "2">Author</option>
+               <option value = "3">User</option>
+           </select>
+          </p>
+</form>
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
+      <a href="adminPanel.html">
       <button>login</button>
+      </a>
+
       <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
     </form>
   </div>
