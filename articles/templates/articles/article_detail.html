@@ -1,32 +1,34 @@
 {% extends 'base_layout.html' %}
 
-{% block content%}
-<body>
-    <div class="article-detail">
-     <div class="article">
+{% block content %}
+<div class="article-detail">
+    <div class="article">
         <img src="{{ article.thumb.url }}" />
         <h2>{{ article.title }}</h2>
         <p>{{ article.body }}</p>
         <p>{{ article.date }}</p>
-     </div>
     </div>
+</div>
 
-    <hr>
 
+<br><br>
+<hr>
 
-    <h1>Leave a Comment</h1>
-    <p>Total No of Comments {{post.comments.count}}</p>
-    <a href="{% url 'articles:add_comment' slug=post.slug}">Leave A Comment</a>
-    {% for comment in post.comments.all %}
-        <p>{{comment.created}}</p>
-        <p>{{comment.user}}</p>
-        <p>{{comment.body}}</p>
-    {% empty %}
-        <p> There is no comment </p>
+<form method="article">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value = "submit" class="btn btn-outline-success">
+</form>
+
+<div class="main-comment-section">
+    {{ comments.count }} Comment{{ comments|pluralize }}
+    {% for comment in comments %}
+    <blockquote class="blockquote">
+       <p class="mb-0">{{ comments.content }}</p>
+       <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}</cite></footer>
+    </blockquote>
     {% endfor %}
 
+</div>
 
-
-
-<body/>
 {% endblock %}

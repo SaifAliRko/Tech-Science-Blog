@@ -1,5 +1,4 @@
 {% extends 'base_layout.html' %}
-< !-- this file extends from base layout template -->
 
 {% block content%}
     <h1>Articles List</h1>
@@ -9,10 +8,8 @@
             <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
             <p>{{ article.snippet }}</p>
             <p>{{ article.date }}</p>
+            <p class="author">added by {{ article.author.username }}</p>
         </div>
     {% endfor %}
     </div>
 {% endblock %}
-
-< !-- extending a base template, a base template has all of the stuff eg header footer etc all goes in to the base template -->
-< !-- so that is how we extend template ie you dont have to add header and footer etc which are saved in base template  -->
