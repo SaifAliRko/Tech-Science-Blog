@@ -7,9 +7,11 @@
         <link rel="stylesheet" href="{% static 'styles.css' %}">
     </head>
     <body>
-        <header class="wrapper">
-            <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}" alt="djangonautic" /></a></h1>
-            <nav>
+        <header class="container">
+        <div id="'branding">
+            <h1><a href="{% url 'articles:list' %}"><span class="highlight">Tech-Science</span> BLOG</a></h1>
+        </div>
+            <nav >
                 <ul>
                     {% if user.is_authenticated %}
                     <li>
@@ -30,5 +32,8 @@
             {% block content %}
             {% endblock %}
         </div>
+    <footer>
+      <p>Tech-Science BLOG, Copyright &copy; 2019</p>
+    </footer>
     </body>
 </html>
