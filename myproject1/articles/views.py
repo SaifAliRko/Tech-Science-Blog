@@ -22,6 +22,7 @@ def article_create(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
+            form.save_m2m()
             return redirect('articles:list')
     else:
         form = forms.CreateArticle()
