@@ -7,12 +7,13 @@ from .filters import ArticleFilter
 
 
 def article_list(request):
-    # articles = Article.objects.all().order_by('date')
-    articles = ArticleFilter(request.GET, queryset=Article.objects.order_by('-date')).qs
+    articles = Article.objects.all().order_by('-date');
+    query = request.GET.get("q")
+    if query:
+        articles = articles.filter(title__icontains=query)
+    return render(request, 'articles/article_list.html', { 'articles': articles })
 
-    print('articles: ', articles)
 
-    return render(request, 'articles/article_list.html', {'articles': articles})
 
 
 def article_detail(request, slug):

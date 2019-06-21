@@ -1,6 +1,10 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
+    <form method="GET" action="">
+  <input type="text" name='q' placeholder="search"/>
+  <input type="submit" value="Search"/>
+    </form>
     <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
         <option value="">Order By</option>
         <option value="./?ordering=a">Date(Ascending)</option>
