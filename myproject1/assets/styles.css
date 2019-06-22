@@ -196,3 +196,32 @@ h1.create {
   margin-top:30px;
   margin-left:300px;
 }
+
+.panel-heading{
+  float:right;
+  margin-left:90px;
+  border: 1px solid #e8572f;
+    padding: 10px;
+    border-radius: 4px;
+    color: #e8572f;
+}
+
+form.search{
+
+margin-top:20px;
+margin-left:none;
+
+    padding: 10px;
+    border-radius: 4px;
+    color: #e8572f;
+
+    padding: 10px;
+    border-radius: 4px;
+    color: #e8572f;
+}
+input.button1, input.button2{
+  border: 1px solid #e8572f;
+    padding: 10px;
+    border-radius: 4px;
+    color: #e8572f;
+}

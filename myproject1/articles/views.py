@@ -1,9 +1,35 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.shortcuts import render, redirect, get_object_or_404
+from taggit.models import Tag
+from django.views.generic import DetailView, ListView
+from .forms import  *
+
+
 from .models import Article
 from django.contrib.auth.decorators import login_required
 from . import forms
-from .filters import ArticleFilter
+
+
+
+
+
+
+class TagMixin(object):
+    def get_context_data(self,**kwargs):
+        context = super(TagMixin,self).get_context_data(**kwargs)
+        context['tags']= Tag.objects.all()
+        return context
+
+class ArticleIndex(TagMixin,ListView):
+    template_name = 'articles/article_list.html'
+    model = Article
+    paginate_by = '1000'
+    queryset = Article.objects.all()
+    context_object_name = 'articles'
+
+    ordering = ['-date']
+
+
 
 
 def article_list(request):
@@ -20,6 +46,17 @@ def article_detail(request, slug):
     # return HttpResponse(slug)
     article = Article.objects.get(slug=slug)
     return render(request, 'articles/article_detail.html', {'article': article})
+
+
+
+class TagIndexView(TagMixin,ListView):
+    template_name = 'articles/article_list.html'
+    model = Article
+    paginate_by = '10'
+    context_object_name = 'articles'
+
+    def get_queryset(self):
+        return Article.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
 @login_required(login_url="/accounts/login/")
