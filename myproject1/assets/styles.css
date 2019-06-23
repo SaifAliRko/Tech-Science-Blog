@@ -226,15 +226,13 @@ h1.create {
 form.search{
 
 margin-top:20px;
-margin-left:none;
+
 
     padding: 10px;
     border-radius: 4px;
     color: #e8572f;
 
-    padding: 10px;
-    border-radius: 4px;
-    color: #e8572f;
+
 }
 input.button1, input.button2{
   border: 1px solid #e8572f;
