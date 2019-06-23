@@ -13,8 +13,10 @@
         </div>
             <nav >
                 <ul>
-                <li><a href="/contact/">Contact Us</a></li>
-                    {% if user.is_authenticated %}
+
+                    <li><a href="/admin/">Admin Panel</a></li>
+                    <li><a href="/contact/">Contact Us</a></li>
+                                    {% if user.is_authenticated %}
                     <li>
                         <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                             {% csrf_token %}

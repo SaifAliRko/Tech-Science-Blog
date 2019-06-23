@@ -59,6 +59,23 @@ class TagIndexView(TagMixin,ListView):
         return Article.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
+def article_edit(request,id):
+    post= get_object_or_404(Article,id=id)
+    if post.author !=request.user:
+        raise Http404()
+    if request.method=="POST":
+        form = ArticleEditForm(request.POST or None, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:list')
+    else:
+        form = ArticleEditForm(instance=post)
+        context={
+            'form':form,
+            'post':post,
+        }
+        return  render(request,'articles/article_edit.html',context)
+
 @login_required(login_url="/accounts/login/")
 def article_create(request):
     if request.method == 'POST':

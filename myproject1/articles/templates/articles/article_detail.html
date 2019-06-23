@@ -10,7 +10,13 @@
         <p>{{article.tags.all|join:", "}}</p>
     </div>
 </div>
-
+{% if article.author == request.user %}
+<div class="section-1" style="float: right;">
+<a href="{% url 'articles:article_edit' id=article.id %}">
+    <button type="button" class="btn btn-outline-success">Edit</button>
+</a>
+</div>
+    {% endif %}
 
 <br><br>
 <hr>

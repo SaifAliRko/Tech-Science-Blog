@@ -5,6 +5,7 @@ from .views import TagIndexView,ArticleIndex
 app_name = 'articles'
 
 urlpatterns = [
+    url(r'(?P<id>\d+)/article_edit/$', views.article_edit, name="article_edit"),
     url(r'^$', ArticleIndex.as_view(), name="list"),
     url(r'^$', views.article_list, name="List"),
     url(r'^create/$', views.article_create, name="create"),
