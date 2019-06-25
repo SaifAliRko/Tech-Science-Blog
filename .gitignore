@@ -1,3 +1,11 @@
-.idea
-**.pyc
-__pycache__
+/myproject1/contact/migrations/__pycache__
+/myproject1/accounts/migrations/__pycache__
+/myproject1/articles/migrations/__pycache__
+/myproject1/tests/migrations/__pycache__
+/myproject1/contact/__pycache__
+/myproject1/accounts/__pycache__
+/myproject1/articles/__pycache__
+/myproject1/tests/__pycache__
+/myproject1/myproject/__pycache__
+/myproject1/venv
+/myproject1/.idea

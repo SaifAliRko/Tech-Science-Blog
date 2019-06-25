@@ -76,6 +76,14 @@ def article_edit(request,id):
         }
         return  render(request,'articles/article_edit.html',context)
 
+def article_delete(request, id):
+    post = get_object_or_404(Article, id=id)
+    if post.author != request.user:
+        raise Http404()
+    post.delete()
+    return redirect('/')
+
+
 @login_required(login_url="/accounts/login/")
 def article_create(request):
     if request.method == 'POST':

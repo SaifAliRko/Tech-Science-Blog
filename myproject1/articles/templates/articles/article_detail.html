@@ -15,6 +15,9 @@
 <a href="{% url 'articles:article_edit' id=article.id %}">
     <button type="button" class="btn btn-outline-success">Edit</button>
 </a>
+<a href="{% url 'articles:article_delete' id=article.id %}">
+    <button type="button" class="btn btn-outline-success">Delete</button>
+</a>
 </div>
     {% endif %}
 
