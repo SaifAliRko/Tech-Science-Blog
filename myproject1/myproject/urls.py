@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'contact/$',contact,name="contact"),
     url(r'^about/$', views.about,name="about"),
-    url(r'^$', article_views.article_list, name="home"),
+    url(r'^$', views.homepage, name="home"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
