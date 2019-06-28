@@ -15,8 +15,7 @@ class ArticleEditForm(forms.ModelForm):
         fields = ['title', 'body', 'slug', 'thumb','tags']
 
 
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('content',)
+        fields = ('text',)

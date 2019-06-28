@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from django.utils import timezone
 
 # Create your models here.
 class Article(models.Model):
@@ -22,11 +23,16 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article = models.ForeignKey(Article,  on_delete=models.PROTECT)
-    user = models.ForeignKey(User,  on_delete=models.PROTECT)
-    content = models.TextField(max_length=150)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    #approved_comment = models.BooleanField(default=False)
+
+    #def approve(self):
+         #self.approved_comment = True
+          #self.save()
 
     def __str__(self):
-         return '{}.{}'.format(self.article.title, str(self.user.username))
+        return '{}.{}'.format(self.post.title, str(self.author))
 

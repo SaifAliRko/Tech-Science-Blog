@@ -1,13 +1,16 @@
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 from django.views.generic import DetailView, ListView
 from .forms import  *
+from . import forms
+from .forms import CreateArticle, CommentForm
 
 
 from .models import Article
 from django.contrib.auth.decorators import login_required
-from . import forms
+
 
 
 
@@ -40,12 +43,26 @@ def article_list(request):
     return render(request, 'articles/article_list.html', { 'articles': articles })
 
 
+def article_detail(request, slug):  # return HttpResponse(slug)
+    post = get_object_or_404(Article, slug=slug)
+    comments = Comment.objects.filter(post=post).order_by('.date')
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        if comment_form.is_valid():
+            text = request.POST.get('text')
+            comment = Comment.objects.create(post=post, author=request.user.username, text=text)
+            comment.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        comment_form = CommentForm()
+        context={
+            'article': post,
+            'comments': comments,
+            'comment_form': comment_form,
+        }
 
+        return  render(request, 'articles/article_detail.html', context)
 
-def article_detail(request, slug):
-    # return HttpResponse(slug)
-    article = Article.objects.get(slug=slug)
-    return render(request, 'articles/article_detail.html', {'article': article})
 
 
 
