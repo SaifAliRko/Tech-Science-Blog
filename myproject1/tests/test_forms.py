@@ -7,7 +7,7 @@ class Comment_test_forms(SimpleTestCase):
     def test_comment_form_valid_data(self):
         form = CommentForm(data=
                            {
-                               'content': 'hey whats up'
+                               'content': 'Yo wassup'
                            }
 
 
@@ -33,7 +33,7 @@ class Create_forms(SimpleTestCase):
     def test_create_form_valid_data(self):
         form = CreateArticle(data=
                            {
-                               'title': 'baby',
+                               'title': 'Ashiq',
                                'body':'cool dude',
                                'slug':'asdasf'
                            }
